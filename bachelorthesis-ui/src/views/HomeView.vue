@@ -10,6 +10,10 @@
     </nav>
   </header>
 
+  <video autoplay loop muted playsinline class="back-video">
+    <source src="../assets/video.mp4" type="video/mp4">
+  </video>
+
   <div class="text">
     <h1>ENJOY YOUR YOUTH</h1>
   </div>
@@ -29,6 +33,7 @@
           <input type="email" required>
           <label>Email</label>
         </div>
+
         <div class="input-box">
           <span class="icon">
             <i class="fa-solid fa-lock"></i>
@@ -36,16 +41,20 @@
           <input type="password" required>
           <label>Password</label>
         </div>
+
         <div class="remember-forgot">
           <label><input type="checkbox">
             Remember me</label>
           <a href="#">Forgot Password?</a>
         </div>
+
         <button type="submit" class="btn">Login</button>
+
         <div class="login-register">
           <p>Don`t have an account? <a href="#" class="register-link"
           >Register</a></p>
         </div>
+
       </form>
     </div>
 
@@ -56,28 +65,41 @@
           <span class="icon">
             <i class="fa-solid fa-user"></i>
           </span>
-          <input type="text" required>
-          <label>Username</label>
+          <input type="text" required v-model="request.firstname">
+          <label>First Name</label>
         </div>
+
+        <div class="input-box">
+          <span class="icon">
+            <i class="fa-solid fa-user"></i>
+          </span>
+          <input type="text" required v-model="request.lastname">
+          <label>Last Name</label>
+        </div>
+
         <div class="input-box">
           <span class="icon">
             <i class="fa-solid fa-envelope"></i>
           </span>
-          <input type="email" required>
+          <input type="email" required v-model="request.email">
           <label>Email</label>
         </div>
+
         <div class="input-box">
           <span class="icon">
             <i class="fa-solid fa-lock"></i>
           </span>
-          <input type="password" required>
+          <input type="password" required v-model="request.password">
           <label>Password</label>
         </div>
+
         <div class="remember-forgot">
           <label><input type="checkbox">
             I agree to the terms & conditions</label>
         </div>
-        <button type="submit" class="btn">Register</button>
+
+        <button type="submit" class="btn" v-on:click="register">Register</button>
+
         <div class="login-register">
           <p>Already have an account? <a href="#" class="login-link"
           >Login</a></p>
@@ -91,14 +113,29 @@
 </template>
 
 <script>
+import UserService from '../services/user-service.js'
 // @ is an alias to /src
 export default {
+  name: 'HomeView',
+  components: {
+  },
+  data () {
+    return {
+      request: {
+        firstname: '',
+        lastname: '',
+        email: '',
+        password: ''
+      }
+    }
+  },
   mounted () {
     const wrapper = document.querySelector('.wrapper')
     const loginLink = document.querySelector('.login-link')
     const registerLink = document.querySelector('.register-link')
     const btnPopup = document.querySelector('.btnLogin-popup')
     const iconClose = document.querySelector('.icon-close')
+
     console.log(registerLink)
     if (registerLink) {
       registerLink.addEventListener('click', () => {
@@ -126,6 +163,15 @@ export default {
         wrapper.classList.remove('active-popup')
       })
     }
+  },
+  methods: {
+    register () {
+      UserService.registerUser(this.request).then(
+        response => {
+          this.message = response.data.message
+        }
+      )
+    }
   }
 }
 </script>
@@ -143,9 +189,26 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url("../assets/10.jpg");
-  background-size: cover;
-  background-position: center;
+}
+.back-video {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .back-video {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .back-video {
+    width: auto;
+    height: 100%;
+  }
 }
 
 header {
@@ -158,10 +221,11 @@ header {
   justify-content: space-between;
   align-items: center;
   z-index: 99;
+  background: rgba(0,0,0,0.2);
 }
 
 .logo {
-  font-size: 2em;
+  font-size: 2.5em;
   color: white;
   user-select: none;
 }
@@ -202,7 +266,7 @@ header {
   outline: none;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 1.1em;
+  font-size: 1.3em;
   color: #fff;
   font-weight: 500;
   margin-left: 40px;
@@ -216,6 +280,8 @@ header {
 
 .wrapper {
   position: relative;
+  top: 30px;
+  right: -100px;
   width: 400px;
   height: 440px;
   background: transparent;
@@ -236,7 +302,7 @@ header {
 }
 
 .wrapper.active {
-  height: 520px;
+  height: 550px;
 }
 
 .wrapper .form-box {
@@ -283,8 +349,9 @@ header {
 }
 
 .form-box h2 {
-  font-size: 2em;
-  color: #162938;
+  font-size: 2.5em;
+  color: #fff;
+  text-shadow: #5d959c 3px 3px;
   text-align: center;
 }
 
@@ -301,8 +368,8 @@ header {
   top: 50%;
   left: 5px;
   transform: translateY(-50%);
-  font-size: 1em;
-  color: #162938;
+  font-size: 1.3em;
+  color: #fff;
   font-weight: 500;
   pointer-events: none;
   transition: .5s;
@@ -319,9 +386,10 @@ header {
   background: transparent;
   border: none;
   outline: none;
-  font-size: 1em;
-  color: #162938;
-  font-weight: 600;
+  font-size: 1.2em;
+  color: #fff;
+  font-weight: 200;
+  font-style: italic;
   padding: 0 35px 0 5px;
 }
 
@@ -329,13 +397,13 @@ header {
   position: absolute;
   right: 8px;
   font-size: 1.2em;
-  color: #162938;
+  color: #fff;
   line-height: 57px;
 }
 
 .remember-forgot {
-  font-size: .9em;
-  color: #162938;
+  font-size: 1em;
+  color: #fff;
   font-weight: 500;
   margin: -15px 0 15px;
   display: flex;
@@ -348,7 +416,7 @@ header {
 }
 
 .remember-forgot a {
-  color: #162938;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -364,21 +432,25 @@ header {
   outline: none;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 1em;
+  font-size: 1.2em;
   color: #fff;
   font-weight: 500;
 }
 
+.btn:hover {
+  color: #5d959c;
+}
+
 .login-register {
-  font-size: .9em;
-  color: #162938;
+  font-size: 1em;
+  color: #fff;
   text-align: center;
   font-weight: 500;
   margin: 25px 0 10px;
 }
 
 .login-register p a {
-  color: #162938;;
+  color: #fff;
   text-decoration: none;
   font-weight: 600;
 }
@@ -387,12 +459,13 @@ header {
   text-decoration: underline;
 }
 
-.text {
+.text h1{
   color: white;
-  text-shadow: #fd5e53 2px 5px;
-  margin-top: 100px;
-  margin-left: 350px;
-  font-size: 40px;
+  text-shadow: #2c3e50 2px 5px;
+  position: relative;
+  top: 250px;
+  right: 170px;
+  font-size: 60px;
   font-style: italic;
 }
 </style>

@@ -54,6 +54,10 @@
     </div>
   </div>
   </div>
+
+  <div class="middlePage">
+    <h2>fdgdg</h2>
+  </div>
 </template>
 <style>
 *{
@@ -80,9 +84,14 @@
   grid-row-end: 1;
   margin-top: 40px;
   margin-left: 100px;
+  padding-top: 30px;
   font-size: 20px;
   text-align: center;
-  color: #111111;
+  color: #045467;
+}
+.grid-item-1 h1 {
+  font-weight: 600;
+  text-shadow: #fff 2px 3px;
 }
 .grid-item-2{
   grid-column-start: 2;
@@ -91,11 +100,17 @@
   grid-row-end: 1;
   margin-left: 80px;
   margin-right: 50px;
-  padding-top: 40px;
+  padding-top: 30px;
   font-size: 20px;
-  color: #111111;
+  color: black;
   text-align: start;
   align-content: center;
+  background-color: #fff;
+  border-radius: 20px;
+  opacity: 0.4;
+  position: relative;
+  top: 40px;
+  height: 230px;
 }
 .grid-item-3{
   grid-column-start: 1;
@@ -111,8 +126,8 @@
 }
 .grid-item-3 .card{
   position: relative;
-  max-width: 350px;
-  height: 150px;
+  max-width: 370px;
+  height: 170px;
   background: #fff;
   margin: 30px 10px;
   padding: 20px 15px;
@@ -123,7 +138,7 @@
   border-radius: 20px;
 }
 .grid-item-3 .card:hover{
-  height: 350px;
+  height: 360px;
 }
 .grid-item-3 .card .imgBx{
   position: relative;
@@ -217,4 +232,5 @@ header{
 }
 </style>
 <script setup>
+
 </script>
