@@ -1,8 +1,20 @@
 <template>
+  <div>
+    <HeaderMenu />
+  </div>
   <router-view/>
   <div>
   </div>
 </template>
+
+<script>
+import HeaderMenu from './components/HeaderMenu.vue'
+export default {
+  components: {
+    HeaderMenu
+  }
+}
+</script>
 
 <style>
 #app {

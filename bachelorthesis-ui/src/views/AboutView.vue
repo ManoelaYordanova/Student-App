@@ -1,14 +1,4 @@
 <template>
-  <header>
-    <h2 class="logo">Student Events</h2>
-    <nav class="navigation">
-      <a href="#">Home</a>
-      <a href="#">Events</a>
-      <a href="#">About</a>
-      <button class="btnLogin-popup">Login</button>
-    </nav>
-  </header>
-
   <div class="upperPage">
   <div class="grid-container">
     <div class="grid-item-1">
@@ -56,7 +46,11 @@
   </div>
 
   <div class="middlePage">
-    <h2>fdgdg</h2>
+    <h2>About Student Events</h2>
+    <div class="middle-info">
+    <p>Student Events was founded with the belief that entrepreneurship education is the key enabler to help youths to discover and utilise their personal capabilities to create impactful solutions that solve the world's biggest problems.</p>
+    <p id="two">Student Events was founded with the belief that entrepreneurship education is the key enabler to help youths to discover and utilise their personal capabilities to create impactful solutions that solve the world's biggest problems.</p>
+  </div>
   </div>
 </template>
 <style>
@@ -67,14 +61,15 @@
   background: url("../assets/6843558.jpg");
   background-size: cover;
   background-position: center;
-  height: 710px;
-  margin-top: -10px;
+  height: 1000px;
+  margin-top: -680px;
 }
 .grid-container{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   margin-top: 130px;
+  padding-top: 220px;
   height: 583px;
 }
 .grid-item-1{
@@ -122,7 +117,7 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  padding: 30px;
+  padding: 100px;
 }
 .grid-item-3 .card{
   position: relative;
@@ -171,64 +166,36 @@
   margin-top: -55px;
   transition-delay: 0.4s;
 }
-header{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 99;
+.middlePage {
+  background: url("../assets/abstract-leaves.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 800px;
+  margin-top: -60px;
 }
-.logo{
-  margin-left: 50px;
-  font-size: 2em;
-  color: black;
-  user-select: none;
-}
-.navigation a{
+.middlePage h2 {
+  font-size: 50px;
+  text-shadow: #f68871 3px 3px;
   position: relative;
-  font-size: 1.5em;
-  color: black;
-  text-decoration: none;
-  font-weight: 500;
-  margin-left: 40px;
+  top: 220px;
+  left: 70px;
 }
-.navigation a::after{
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 100%;
-  height: 3px;
-  background: black;
-  border-radius: 5px;
-  transform-origin: right;
-  transform: scaleX(0);
-  transition: transform .5s;
+.middle-info p {
+  font-size: 30px;
+  text-align: center;
+  justify-content: center;
+  width: 650px;
+  position: relative;
+  top: 250px;
+  left: 500px;
 }
-.navigation a:hover::after{
-  transform-origin: left;
-  transform: scaleX(1);
-}
-.navigation .btnLogin-popup{
-  width: 130px;
-  height: 50px;
-  background: transparent;
-  border: 2px solid black;
-  outline: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1.1em;
-  color: black;
-  font-weight: 500;
-  margin-left: 40px;
-  transition: .5s;
-}
-.navigation .btnLogin-popup:hover{
-  background: #42b983;
-  color: #fff;
+#two {
+  font-size: 22px;
+  color: #5d959c;
+  width: 800px;
+  position: relative;
+  left: 430px;
+  top: 300px;
 }
 </style>
 <script setup>

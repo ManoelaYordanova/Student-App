@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AddEvent from '@/components/AddEvent.vue'
+import EventsPage from '@/components/EventsPage.vue'
 
 const routes = [
   {
@@ -20,6 +21,11 @@ const routes = [
     path: '/addEvent',
     name: 'AddEvent',
     component: AddEvent
+  },
+  {
+    path: '/eventsPage',
+    name: 'EventsPage',
+    component: EventsPage
   }
 ]
 
