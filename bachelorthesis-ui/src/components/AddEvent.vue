@@ -1,0 +1,136 @@
+<template>
+  <body>
+  <div class="container">
+    <form>
+      <h1>Describe and share your event</h1>
+      <div class="grid-date-time">
+          <input type="text" id="name" required>
+          <input type="file" id="choose" accept="image/png, image/jpeg">
+          <input type="date" value="2023-04-28" min="2023-04-28" max="2023-12-31" required>
+          <input type="date" id="endDate" value="2023-04-28" min="2023-04-28" max="2023-12-31" required>
+          <input type="time" min="09:00" max="18:00" required>
+          <input type="time" id="endTime" min="09:00" max="18:00" required>
+      </div>
+      <textarea placeholder="Event description" rows="5" cols="33"></textarea>
+      <button id="button" class="button" type="submit">Add</button>
+    </form>
+  </div>
+  </body>
+</template>
+
+<script>
+export default {
+  name: 'AddEvent'
+}
+</script>
+
+<style scoped>
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Book Antiqua";
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  top: -440px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url("../assets/10.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.container form {
+  position: relative;
+  top: 50px;
+  left: 180px;
+  width: 830px;
+  height: 550px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  flex-wrap: wrap;
+  padding: 10px 20px 10px 20px;
+}
+
+.container form h1 {
+  color: #111111;
+  text-shadow: #BBB3AC 3px 3px;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-left: 20px;
+  height: 50px;
+  width: 500px;
+  text-align: center;
+}
+
+.container form input {
+  width: 290px;
+  height: 40px;
+  padding-left: 10px;
+  outline: none;
+  border: none;
+  font-size: 15px;
+  margin-bottom: 10px;
+  background: none;
+  border-bottom: 2px solid #111111;
+}
+
+.container form input::placeholder {
+  color: #111111;
+  font-size: 18px;
+}
+
+.grid-date-time {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.container form #endDate, #endTime, #choose, #button {
+  margin-left: 20px;
+}
+
+.container form textarea {
+  background: none;
+  border: none;
+  border-bottom: 2px solid #111111;
+  color: #111111;
+  font-weight: 200;
+  font-size: 15px;
+  padding: 10px;
+  outline: none;
+  min-width: 600px;
+  max-width: 600px;
+  min-height: 80px;
+  max-height: 80px;
+}
+textarea::-webkit-scrollbar-track {
+  width: 1em;
+}
+textarea::-webkit-scrollbar-thumb {
+  background-color: rgba(194,194,194,0.713);
+}
+.button {
+  position: relative;
+  bottom: 10px;
+  right: 10px;
+  height: 40px;
+  width: 600px;
+  border: 2px solid #111111;
+  border-radius: 20px;
+  background: #BBB3AC;
+  font-size: 18px;
+  color: #111111;
+}
+.button:hover {
+  background: #8c776b;
+  color: #fff;
+}
+</style>

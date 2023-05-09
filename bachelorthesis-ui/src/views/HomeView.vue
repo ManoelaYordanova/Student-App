@@ -104,7 +104,7 @@ section {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background:  #dfe4e7;
+  background: #cde0ec;
 }
 
 .home .content {
@@ -151,7 +151,7 @@ section {
 }
 
 .home .media-icons a {
-  color: #fff;
+  color: #cde0ec;
   font-size: 2em;
 }
 
@@ -202,7 +202,7 @@ section {
 }
 
 .slider-navigation .nav-btn.active {
-  background: #7ac2eb;
+  background: #cde0ec;
 }
 .video-slide {
   position: absolute;
