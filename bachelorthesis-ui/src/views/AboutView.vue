@@ -62,7 +62,7 @@
   background-size: cover;
   background-position: center;
   height: 1000px;
-  margin-top: -680px;
+  margin-top: -280px;
 }
 .grid-container{
   display: grid;

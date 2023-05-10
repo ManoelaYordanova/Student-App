@@ -15,7 +15,7 @@ export default {
 <style scoped>
 .mainImg {
   position: relative;
-  top: -440px;
+  top: 0px;
 }
 .mainImg img {
   height: 550px;

@@ -3,7 +3,7 @@
   <section class="home">
     <video class="video-slide active" src="../assets/video.mp4" autoplay muted loop></video>
     <video class="video-slide" src="../assets/video2.mp4" autoplay muted loop></video>
-    <video class="video-slide" src="../assets/video.mp4" autoplay muted loop></video>
+    <video class="video-slide" src="../assets/video3.mp4" autoplay muted loop></video>
     <div class="content active">
       <h1>Be with friends.<br><span>Be happy</span></h1>
       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
@@ -98,7 +98,7 @@ section {
 
 .home {
   position: relative;
-  bottom: 440px;
+  bottom: 0px;
   width: 100%;
   min-height: 100vh;
   display: flex;

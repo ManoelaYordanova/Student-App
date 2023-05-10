@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import AddEvent from '@/components/AddEvent.vue'
 import EventsPage from '@/components/EventsPage.vue'
 import LoginForm from '@/views/LoginForm.vue'
+import SignUp from '@/views/SignUp.vue'
 
 const routes = [
   {
@@ -29,9 +30,14 @@ const routes = [
     component: EventsPage
   },
   {
-    path: '/loginForm',
+    path: '/login',
     name: 'LoginForm',
     component: LoginForm
+  },
+  {
+    path: '/signUp',
+    name: 'SignUp',
+    component: SignUp
   }
 ]
 

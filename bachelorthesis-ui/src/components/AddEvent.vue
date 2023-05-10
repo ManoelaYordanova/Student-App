@@ -34,7 +34,7 @@ export default {
 
 body {
   position: relative;
-  top: -440px;
+  top: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -132,5 +132,7 @@ textarea::-webkit-scrollbar-thumb {
 .button:hover {
   background: #8c776b;
   color: #fff;
+}
+#choose {
 }
 </style>

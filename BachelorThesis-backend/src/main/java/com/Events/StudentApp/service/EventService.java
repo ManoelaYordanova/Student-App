@@ -30,7 +30,7 @@ public class EventService {
             newEvent.setStartTime(eventRequest.getStartTime());
             newEvent.setEndTime(eventRequest.getEndTime());
             newEvent.setDescription(eventRequest.getDescription());
-            newEvent.setUser(user.get());
+            newEvent.setUser(((User)auth.getPrincipal()));
 
             eventRepository.save(newEvent);
             return ResponseEntity.ok().body(newEvent);
