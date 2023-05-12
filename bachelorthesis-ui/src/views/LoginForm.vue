@@ -9,14 +9,14 @@
               <span class="icon">
               <i class="fa-solid fa-envelope"></i>
               </span>
-            <input type="email" required>
+            <input type="email" required v-model="request.email">
             <label for="">Email</label>
           </div>
           <div class="inputbox">
               <span class="icon">
               <i class="fa-solid fa-lock"></i>
               </span>
-            <input type="password" required>
+            <input type="password" required v-model="request.password">
             <label for="">Password</label>
           </div>
 
@@ -24,7 +24,7 @@
             <label for=""><input type="checkbox">Remember me  <a href="#">Forget Password</a></label>
           </div>
 
-          <button>Log in</button>
+          <button v-on:click="authenticate">Log in</button>
 
           <div class="register">
             <p>Don`t have an account <a href="#">Register</a></p>
@@ -37,8 +37,30 @@
 </template>
 
 <script>
+import UserService from '@/services/user-service'
 export default {
-  name: 'LoginForm'
+  name: 'LoginForm',
+  components: {
+  },
+  data () {
+    return {
+      request: {
+        email: '',
+        password: ''
+      }
+    }
+  },
+  mounted () {
+  },
+  methods: {
+    authenticate () {
+      UserService.authenticateUser(this.request).then(
+        response => {
+          this.message = response.data.message
+        }
+      )
+    }
+  }
 }
 </script>
 

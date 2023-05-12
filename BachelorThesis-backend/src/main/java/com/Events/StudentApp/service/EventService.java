@@ -23,7 +23,6 @@ public class EventService {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Optional<User> user = userRepository.findByEmail(auth.getPrincipal().toString());
         Event newEvent = new Event();
-            newEvent.setId(eventRequest.getId());
             newEvent.setName(eventRequest.getName());
             newEvent.setStartDate(eventRequest.getStartDate());
             newEvent.setEndDate(eventRequest.getEndDate());
@@ -34,6 +33,12 @@ public class EventService {
 
             eventRepository.save(newEvent);
             return ResponseEntity.ok().body(newEvent);
+    }
+
+    public ResponseEntity<?> getAllEvents() {
+        var returnAllEvents =  eventRepository.findAll();
+        System.out.println(returnAllEvents);
+        return ResponseEntity.ok().body(returnAllEvents);
     }
 
     public void deleteEvent(Integer id) {

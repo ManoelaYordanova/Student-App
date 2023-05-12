@@ -14,8 +14,6 @@ import java.util.Date;
 @NoArgsConstructor
 public class EventRequest {
 
-    private Integer id;
-
     private String name;
 
     private Date startDate;

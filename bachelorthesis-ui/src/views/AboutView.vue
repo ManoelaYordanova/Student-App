@@ -58,7 +58,7 @@
   font-family: "Book Antiqua";
 }
 .upperPage{
-  background: url("../assets/6843558.jpg");
+  background: url("../assets/water2.jpg");
   background-size: cover;
   background-position: center;
   height: 1000px;
@@ -68,7 +68,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  margin-top: 130px;
+  margin-top: 160px;
   padding-top: 220px;
   height: 583px;
 }
@@ -123,7 +123,7 @@
   position: relative;
   max-width: 370px;
   height: 170px;
-  background: #fff;
+  background: #EDE9E8;
   margin: 30px 10px;
   padding: 20px 15px;
   display: flex;
@@ -163,11 +163,11 @@
 .grid-item-3 .card:hover .content{
   visibility: visible;
   opacity: 1;
-  margin-top: -55px;
+  margin-top: -65px;
   transition-delay: 0.4s;
 }
 .middlePage {
-  background: url("../assets/abstract-leaves.jpg");
+  background: url("../assets/water.jpg");
   background-size: cover;
   background-position: center;
   height: 800px;
@@ -175,27 +175,29 @@
 }
 .middlePage h2 {
   font-size: 50px;
-  text-shadow: #f68871 3px 3px;
+  color: #045467;
+  text-shadow: #fff 3px 3px;
   position: relative;
-  top: 220px;
-  left: 70px;
+  top: 120px;
+  left: 270px;
+  width: 70%;
 }
 .middle-info p {
   font-size: 30px;
   text-align: center;
   justify-content: center;
-  width: 650px;
+  width: 850px;
   position: relative;
-  top: 250px;
-  left: 500px;
+  top: 160px;
+  left: 400px;
 }
 #two {
   font-size: 22px;
   color: #5d959c;
-  width: 800px;
+  width: 1000px;
   position: relative;
-  left: 430px;
-  top: 300px;
+  left: 350px;
+  top: 200px;
 }
 </style>
 <script setup>

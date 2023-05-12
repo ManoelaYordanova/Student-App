@@ -4,23 +4,49 @@
     <form>
       <h1>Describe and share your event</h1>
       <div class="grid-date-time">
-          <input type="text" id="name" required>
+          <input type="text" id="name" required v-model="eventRequest.name">
           <input type="file" id="choose" accept="image/png, image/jpeg">
-          <input type="date" value="2023-04-28" min="2023-04-28" max="2023-12-31" required>
-          <input type="date" id="endDate" value="2023-04-28" min="2023-04-28" max="2023-12-31" required>
-          <input type="time" min="09:00" max="18:00" required>
-          <input type="time" id="endTime" min="09:00" max="18:00" required>
+          <input type="date" min="2023-04-28" max="2023-12-31" required v-model="eventRequest.startDate">
+          <input type="date" id="endDate" min="2023-04-28" max="2023-12-31" required v-model="eventRequest.endDate">
+          <input type="time" min="09:00" max="18:00" required v-model="eventRequest.startTime">
+          <input type="time" id="endTime" min="09:00" max="18:00" required v-model="eventRequest.endTime">
       </div>
-      <textarea placeholder="Event description" rows="5" cols="33"></textarea>
-      <button id="button" class="button" type="submit">Add</button>
+      <textarea placeholder="Event description" rows="5" cols="33" v-model="eventRequest.description"></textarea>
+      <button id="button" class="button" type="submit" v-on:click="addEvent">Add</button>
     </form>
   </div>
   </body>
 </template>
 
 <script>
+import EventService from '@/services/event-service'
 export default {
-  name: 'AddEvent'
+  name: 'AddEvent',
+  components: {
+  },
+  data () {
+    return {
+      eventRequest: {
+        name: '',
+        startDate: '',
+        endDate: '',
+        startTime: '',
+        endTime: '',
+        description: ''
+      }
+    }
+  },
+  mounted () {
+  },
+  methods: {
+    addEvent () {
+      EventService.addEvent(this.eventRequest).then(
+        response => {
+          this.message = response.data.message
+        }
+      )
+    }
+  }
 }
 </script>
 
@@ -39,7 +65,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url("../assets/10.jpg");
+  background: url("../assets/water3.jpg");
   background-size: cover;
   background-position: center;
 }

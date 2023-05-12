@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(maxAge = 3600)
 @RestController
 @RequestMapping("/event")
 @RequiredArgsConstructor
@@ -16,6 +17,11 @@ public class EventController {
     @PostMapping("/create")
     public ResponseEntity<?> createEvent(@RequestBody EventRequest eventRequest) {
         return eventService.createEvent(eventRequest);
+    }
+
+    @GetMapping("/load")
+    public ResponseEntity<?> loadAllEvents() {
+        return eventService.getAllEvents();
     }
 
     @DeleteMapping("/delete")
