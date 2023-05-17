@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
 import java.time.LocalTime;
 import java.util.Date;
 
@@ -16,13 +17,11 @@ public class EventRequest {
 
     private String name;
 
-    private Date startDate;
+    private Timestamp startDateTime;
 
-    private Date endDate;
-
-    private LocalTime startTime;
-
-    private LocalTime endTime;
+    private Timestamp endDateTime;
 
     private String description;
+
+    private String city;
 }

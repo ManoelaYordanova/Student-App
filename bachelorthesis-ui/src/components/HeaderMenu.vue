@@ -43,7 +43,7 @@ header {
 
 .navigation h1 {
   display: inline-block;
-  font-size: 1.8em;
+  font-size: 1.7em;
   color: white;
   text-decoration: none;
   font-weight: 500;

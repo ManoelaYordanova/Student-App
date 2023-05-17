@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Blob;
+import java.sql.Timestamp;
 import java.time.LocalTime;
 import java.util.Date;
 
@@ -23,15 +24,13 @@ public class Event {
 
     private String name;
 
-    private Date startDate;
+    private Timestamp startDateTime;
 
-    private Date endDate;
-
-    private LocalTime startTime;
-
-    private LocalTime endTime;
+    private Timestamp endDateTime;
 
     private String description;
+
+    private String city;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

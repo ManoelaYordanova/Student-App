@@ -5,11 +5,9 @@
       <h1>Describe and share your event</h1>
       <div class="grid-date-time">
           <input type="text" id="name" required v-model="eventRequest.name">
-          <input type="file" id="choose" accept="image/png, image/jpeg">
-          <input type="date" min="2023-04-28" max="2023-12-31" required v-model="eventRequest.startDate">
-          <input type="date" id="endDate" min="2023-04-28" max="2023-12-31" required v-model="eventRequest.endDate">
-          <input type="time" min="09:00" max="18:00" required v-model="eventRequest.startTime">
-          <input type="time" id="endTime" min="09:00" max="18:00" required v-model="eventRequest.endTime">
+          <input type="text" id="name" required v-model="eventRequest.city">
+          <input type="datetime-local" min="2023-04-28" max="2023-12-31" required v-model="eventRequest.startDateTime">
+          <input type="datetime-local" id="endDate" min="2023-04-28" max="2023-12-31" required v-model="eventRequest.endDateTime">
       </div>
       <textarea placeholder="Event description" rows="5" cols="33" v-model="eventRequest.description"></textarea>
       <button id="button" class="button" type="submit" v-on:click="addEvent">Add</button>
@@ -28,10 +26,9 @@ export default {
     return {
       eventRequest: {
         name: '',
-        startDate: '',
-        endDate: '',
-        startTime: '',
-        endTime: '',
+        city: '',
+        startDateTime: '',
+        endDateTime: '',
         description: ''
       }
     }

@@ -24,11 +24,10 @@ public class EventService {
         Optional<User> user = userRepository.findByEmail(auth.getPrincipal().toString());
         Event newEvent = new Event();
             newEvent.setName(eventRequest.getName());
-            newEvent.setStartDate(eventRequest.getStartDate());
-            newEvent.setEndDate(eventRequest.getEndDate());
-            newEvent.setStartTime(eventRequest.getStartTime());
-            newEvent.setEndTime(eventRequest.getEndTime());
+            newEvent.setStartDateTime(eventRequest.getStartDateTime());
+            newEvent.setEndDateTime(eventRequest.getEndDateTime());
             newEvent.setDescription(eventRequest.getDescription());
+            newEvent.setCity(eventRequest.getCity());
             newEvent.setUser(((User)auth.getPrincipal()));
 
             eventRepository.save(newEvent);

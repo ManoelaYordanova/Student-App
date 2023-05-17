@@ -8,16 +8,26 @@ class EventService {
     return axios.post(API_URL + '/create',
       {
         name: eventRequest.name,
-        startDate: eventRequest.startDate,
-        endDate: eventRequest.endDate,
-        startTime: eventRequest.startTime,
-        endTime: eventRequest.endTime,
+        city: eventRequest.city,
+        startDateTime: eventRequest.startDateTime,
+        endDateTime: eventRequest.endDateTime,
         description: eventRequest.description
       })
   }
 
   getAllEvents () {
     return axios.get(API_URL + '/load')
+  }
+
+  getEventsPage (currentPage, perPage) {
+    return axios.get(API_URL + '/page',
+      {
+        params:
+          {
+            currentPage: currentPage,
+            perPage: perPage
+          }
+      })
   }
 }
 
