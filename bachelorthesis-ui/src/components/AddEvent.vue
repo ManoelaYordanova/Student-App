@@ -1,6 +1,6 @@
 <template>
   <body>
-  <div class="container">
+  <div class="container" @submit.prevent="loggedUser">
     <form>
       <h1>Describe and share your event</h1>
       <div class="grid-date-time">

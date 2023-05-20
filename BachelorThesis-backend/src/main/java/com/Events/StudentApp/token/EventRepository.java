@@ -10,8 +10,14 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+
 @Repository
 public interface EventRepository extends JpaRepository<Event, Integer> {
     @Query("SELECT e FROM Event e")
     Page<Event> findEvents(Pageable pageable);
+
+    @Query("SELECT e FROM Event e WHERE e.user.email = :userEmail")
+    List<Event> findAllEventsByUser(String userEmail);
+
 }

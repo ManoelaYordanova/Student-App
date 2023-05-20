@@ -23,6 +23,18 @@ class UserService {
         password: request.password
       })
   }
+
+  loggedUser () {
+    const token = localStorage.getItem('token')
+
+    return axios.get(API_URL + '/api/v1/auth/authenticate',
+      {
+        headers: {
+          Authorization: 'Bearer ' + token,
+          'x-access-token': token
+        }
+      })
+  }
 }
 
 export default new UserService()

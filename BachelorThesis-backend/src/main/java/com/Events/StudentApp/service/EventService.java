@@ -11,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -42,5 +43,14 @@ public class EventService {
 
     public void deleteEvent(Integer id) {
         eventRepository.findById(id).ifPresent(event -> eventRepository.delete(event));
+    }
+
+    public ResponseEntity<?> findAllEventsByUserId(String userId) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Optional<User> user = userRepository.findByEmail(auth.getPrincipal().toString());
+
+        var returnAllEventsByUser = eventRepository.findAllEventsByUser(user.get().getEmail());
+        System.out.println(returnAllEventsByUser);
+        return ResponseEntity.ok().body(returnAllEventsByUser);
     }
 }

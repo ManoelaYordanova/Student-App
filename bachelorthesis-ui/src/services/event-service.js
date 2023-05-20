@@ -29,6 +29,16 @@ class EventService {
           }
       })
   }
+
+  getEventsByUserEmail (email) {
+    return axios.get(API_URL + '/myEvents',
+      {
+        params:
+          {
+            email: email
+          }
+      })
+  }
 }
 
 export default new EventService()

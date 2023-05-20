@@ -4,6 +4,7 @@ import AddEvent from '@/components/AddEvent.vue'
 import EventsPage from '@/components/EventsPage.vue'
 import LoginForm from '@/views/LoginForm.vue'
 import SignUp from '@/views/SignUp.vue'
+import MyAccount from '@/components/MyAccount.vue'
 
 const routes = [
   {
@@ -38,6 +39,11 @@ const routes = [
     path: '/signUp',
     name: 'SignUp',
     component: SignUp
+  },
+  {
+    path: '/myAccount',
+    name: 'MyAccount',
+    component: MyAccount
   }
 ]
 

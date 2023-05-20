@@ -26,11 +26,11 @@
   </div>
   <nav aria-label="Page navigation example">
     <ul class="pagination">
-      <li class="page-item"><a class="page-link" v-on="loadPrevious">Previous</a></li>
+      <li class="page-item"><a class="page-link" v-on:click="loadPrevious">Previous</a></li>
       <template v-for="item in totalPages" v-bind:key="item">
-        <li class="page-item"><a class="page-link" v-on="loadPage(item)">{{item}}</a></li>
+        <li class="page-item"><a class="page-link" v-on:click="loadPage(item)">{{item}}</a></li>
       </template>
-      <li class="page-item"><a class="page-link" v-on="loadNext">Next</a></li>
+      <li class="page-item"><a class="page-link" v-on:click="loadNext">Next</a></li>
     </ul>
   </nav>
   </body>
@@ -74,14 +74,17 @@ export default {
     loadPrevious () {
       if (this.currentPage !== 1) {
         this.currentPage -= 1
+        this.loadAllEvents()
       }
     },
     loadPage (page) {
       this.currentPage = page
+      this.loadAllEvents()
     },
     loadNext () {
       if (this.totalPages > this.currentPage) {
         this.currentPage += 1
+        this.loadAllEvents()
       }
     },
     pageEvents () {
@@ -116,7 +119,7 @@ body {
   top: 0px;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 1200px;
   background: url("../assets/water.jpg");
   background-size: cover;
   background-position: center;
@@ -202,7 +205,7 @@ body {
 .pagination {
   width: 400px;
   position: relative;
-  top: 55px;
+  top: 100px;
   left: 630px;
 }
 .box {

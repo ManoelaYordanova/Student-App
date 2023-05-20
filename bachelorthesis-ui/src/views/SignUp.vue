@@ -45,7 +45,7 @@
           <button v-on:click="register">Register</button>
 
           <div class="register">
-            <p>Already have an account? <a href="#">Login</a></p>
+            <p>Already have an account? <router-link to="/login">Login</router-link></p>
           </div>
         </form>
       </div>
@@ -100,7 +100,7 @@ section {
   align-items: center;
   min-height: 100vh;
   width: 100%;
-  background: url("../assets/10.jpg")no-repeat;
+  background: url("../assets/water8.jpg")no-repeat;
   background-size: cover;
   background-position: center;
 }

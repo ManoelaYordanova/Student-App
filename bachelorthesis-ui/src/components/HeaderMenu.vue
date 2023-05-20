@@ -8,6 +8,7 @@
       <router-link to="/addEvent"><h1>Add Event</h1></router-link>
       <router-link to="/signUp"><h1>| Sign up</h1></router-link>
       <router-link to="/login"><h1>Log in</h1></router-link>
+      <router-link to="/myAccount"><h1>My Account</h1></router-link>
     </nav>
   </header>
 </template>
