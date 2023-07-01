@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../axios'
 
 const API_URL = 'http://localhost:8080'
 
@@ -21,18 +21,6 @@ class UserService {
       {
         email: request.email,
         password: request.password
-      })
-  }
-
-  loggedUser () {
-    const token = localStorage.getItem('token')
-
-    return axios.get(API_URL + '/api/v1/auth/authenticate',
-      {
-        headers: {
-          Authorization: 'Bearer ' + token,
-          'x-access-token': token
-        }
       })
   }
 }
