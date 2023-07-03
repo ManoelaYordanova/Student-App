@@ -36,6 +36,9 @@ public class EventService {
     }
 
     public ResponseEntity<?> getAllEvents() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Optional<User> user = userRepository.findByEmail(auth.getPrincipal().toString());
+
         var returnAllEvents =  eventRepository.findAll();
         System.out.println(returnAllEvents);
         return ResponseEntity.ok().body(returnAllEvents);
@@ -45,11 +48,10 @@ public class EventService {
         eventRepository.findById(id).ifPresent(event -> eventRepository.delete(event));
     }
 
-    public ResponseEntity<?> findAllEventsByUserId(String userId) {
+    public ResponseEntity<?> findAllEventsByUserId() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Optional<User> user = userRepository.findByEmail(auth.getPrincipal().toString());
 
-        var returnAllEventsByUser = eventRepository.findAllEventsByUser(user.get().getEmail());
+        var returnAllEventsByUser = eventRepository.findAllEventsByUser(((User)auth.getPrincipal()).getId());
         System.out.println(returnAllEventsByUser);
         return ResponseEntity.ok().body(returnAllEventsByUser);
     }

@@ -17,7 +17,7 @@ public interface EventRepository extends JpaRepository<Event, Integer> {
     @Query("SELECT e FROM Event e")
     Page<Event> findEvents(Pageable pageable);
 
-    @Query("SELECT e FROM Event e WHERE e.user.email = :userEmail")
-    List<Event> findAllEventsByUser(String userEmail);
+    @Query("SELECT e FROM Event e WHERE e.user.id = :userId")
+    List<Event> findAllEventsByUser(Integer userId);
 
 }

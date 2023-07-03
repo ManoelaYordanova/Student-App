@@ -205,8 +205,11 @@ body {
 .pagination {
   width: 400px;
   position: relative;
-  top: 100px;
+  top: 95px;
   left: 630px;
+}
+.pagination:hover {
+  cursor: pointer;
 }
 .box {
   position: relative;

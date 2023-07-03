@@ -23,7 +23,7 @@ class EventService {
   }
 
   getAllEvents () {
-    return axios.get(API_URL + '/load')
+    return axios.get(API_URL + '/myEvents')
   }
 
   getEventsPage (currentPage, perPage) {
@@ -33,16 +33,6 @@ class EventService {
           {
             currentPage: currentPage,
             perPage: perPage
-          }
-      })
-  }
-
-  getEventsByUserEmail (email) {
-    return axios.get(API_URL + '/myEvents',
-      {
-        params:
-          {
-            email: email
           }
       })
   }

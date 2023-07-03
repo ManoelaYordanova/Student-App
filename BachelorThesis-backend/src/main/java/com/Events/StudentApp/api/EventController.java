@@ -56,7 +56,7 @@ public class EventController {
     }
 
     @GetMapping("/myEvents")
-    public ResponseEntity<?> findAllEventsByUserEmail(@RequestParam String email) {
-        return eventService.findAllEventsByUserId(email);
+    public ResponseEntity<?> findAllEventsByUser() {
+        return eventService.findAllEventsByUserId();
     }
 }

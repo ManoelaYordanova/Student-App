@@ -56,7 +56,8 @@ export default {
     authenticate () {
       UserService.authenticateUser(this.request).then(
         response => {
-          this.message = response.data.message
+          localStorage.setItem('access_token', response.data.access_token)
+          localStorage.setItem('refresh_token', response.data.refresh_token)
         }
       )
     }

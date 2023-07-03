@@ -3,11 +3,11 @@
     <thead>
     <tr>
       <th scope="col">Name</th>
-      <th scope="col">Description</th>
-      <th scope="col">Start Date and Time</th>
-      <th scope="col">End Date and Time</th>
+      <th scope="col">What is the event about</th>
+      <th scope="col">Start date&time</th>
+      <th scope="col">End date&time</th>
       <th scope="col">City</th>
-      <th scope="col">Действия</th>
+      <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
@@ -18,7 +18,7 @@
       <td>{{ event.endDateTime }}</td>
       <td>{{ event.city }}</td>
       <td>
-        <button type="button" class="btn btn-dark">Изтрий</button>
+        <button type="button" class="btn btn-danger">Delete</button>
       </td>
     </tr>
     </tbody>
@@ -32,7 +32,13 @@ export default {
   components: {},
   data () {
     return {
-      content: []
+      content: [{
+        name: '',
+        description: '',
+        startDateTime: '',
+        endDateTime: '',
+        city: ''
+      }]
     }
   },
   mounted () {
@@ -40,7 +46,7 @@ export default {
   },
   methods: {
     loadAllEventsByUser () {
-      EventService.getEventsByUserEmail().then(
+      EventService.getAllEvents().then(
         response => {
           console.log(response)
           this.content = response.data()
