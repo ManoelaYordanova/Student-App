@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface EventRepository extends JpaRepository<Event, Integer> {
@@ -19,5 +20,8 @@ public interface EventRepository extends JpaRepository<Event, Integer> {
 
     @Query("SELECT e FROM Event e WHERE e.user.id = :userId")
     List<Event> findAllEventsByUser(Integer userId);
+
+    @Query("SELECT e FROM Event e WHERE LOWER(e.name) LIKE CONCAT('%',LOWER(:name),'%') OR LOWER(e.city) LIKE CONCAT('%',LOWER(:name),'%')")
+    Page<Event> findEventByNameOrCity(Pageable pageable, String name);
 
 }

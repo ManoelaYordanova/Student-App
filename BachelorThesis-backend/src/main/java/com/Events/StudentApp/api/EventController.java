@@ -35,14 +35,16 @@ public class EventController {
         return eventService.getAllEvents();
     }
 
-    @DeleteMapping("/delete")
-    public void deleteEvent(@RequestParam Integer id) {
+    @DeleteMapping("/myEvents/delete")
+    public ResponseEntity<?> deleteEvent(@RequestParam Integer id) {
         eventService.deleteEvent(id);
+        return ResponseEntity.ok("Successfully deleted!");
     }
 
     @GetMapping("/page")
     public ResponseEntity<?> paginateEvent(@RequestParam(value = "currentPage", defaultValue = "1") int currentPage,
-                                           @RequestParam(value = "perPage", defaultValue = "6") int perPage
+                                           @RequestParam(value = "perPage", defaultValue = "6") int perPage,
+                                           @RequestParam String name
                                            ) {
         Pageable pagable = PageRequest.of(currentPage - 1, perPage);
         Page<Event> events = eventRepository.findEvents(pagable);
@@ -59,4 +61,20 @@ public class EventController {
     public ResponseEntity<?> findAllEventsByUser() {
         return eventService.findAllEventsByUserId();
     }
+
+    @GetMapping("/search/event")
+    public ResponseEntity<?> getEventByNameOrCity(@RequestParam(value = "currentPage", defaultValue = "1") int currentPage,
+                                                  @RequestParam(value = "perPage", defaultValue = "6") int perPage,
+                                                  @RequestParam String name){
+        Pageable pagable = PageRequest.of(currentPage - 1, perPage);
+        Page<Event> events = eventService.getEventByNameOrCity(pagable, name);
+        Map<String, Object> response = new HashMap<>();
+        response.put("events", events.getContent());
+        response.put("currentPage", events.getNumber()+1);
+        response.put("totalItems", events.getTotalElements());
+        response.put("totalPages", events.getTotalPages());
+
+        return  new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
 }

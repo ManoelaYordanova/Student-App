@@ -3,8 +3,8 @@
   <div class="box">
     <form>
       <i class="fa-solid fa-magnifying-glass" id="icon"></i>
-      <input class="search" type="text">
-      <button type="submit">Search</button>
+      <input class="search" type="text" v-model="searchEvent">
+      <button v-on:click="loadAllEvents">Search</button>
     </form>
   </div>
   <div class="container">
@@ -44,6 +44,7 @@ export default {
   components: {},
   data () {
     return {
+      searchEvent: '',
       content: [],
       currentPage: 1,
       perPage: 6,
@@ -56,7 +57,7 @@ export default {
   },
   methods: {
     loadAllEvents () {
-      EventService.getEventsPage(this.currentPage, this.perPage).then(
+      EventService.getEventsPage(this.currentPage, this.perPage, this.searchEvent).then(
         response => {
           console.log(response)
           this.content = response.data.events
@@ -99,6 +100,21 @@ export default {
               error.response && error.response.data) ||
               error.message ||
               error.toString()
+        }
+      )
+    },
+    loadSearchedEventByName (name) {
+      EventService.getSearchedEventByName().then(
+        response => {
+          console.log(response)
+          this.searchedEvents = response.data
+        },
+        error => {
+          this.searchedEvents =
+            (
+              error.response && error.response.data) ||
+              error.message ||
+            error.toString()
         }
       )
     }
@@ -245,5 +261,9 @@ form #icon{
   align-self: center;
   padding: 10px 20px;
   color: #777;
+}
+.searchedEvent {
+  position: relative;
+  top: 30px;
 }
 </style>

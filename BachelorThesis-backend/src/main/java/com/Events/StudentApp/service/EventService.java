@@ -6,10 +6,13 @@ import com.Events.StudentApp.user.Event;
 import com.Events.StudentApp.user.User;
 import com.Events.StudentApp.user.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
@@ -45,6 +48,8 @@ public class EventService {
     }
 
     public void deleteEvent(Integer id) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
         eventRepository.findById(id).ifPresent(event -> eventRepository.delete(event));
     }
 
@@ -54,5 +59,10 @@ public class EventService {
         var returnAllEventsByUser = eventRepository.findAllEventsByUser(((User)auth.getPrincipal()).getId());
         System.out.println(returnAllEventsByUser);
         return ResponseEntity.ok().body(returnAllEventsByUser);
+    }
+
+    public Page<Event> getEventByNameOrCity(@RequestParam Pageable page, @RequestParam String name) {
+        Page<Event> result = eventRepository.findEventByNameOrCity(page, name);
+        return result;
     }
 }

@@ -26,13 +26,34 @@ class EventService {
     return axios.get(API_URL + '/myEvents')
   }
 
-  getEventsPage (currentPage, perPage) {
-    return axios.get(API_URL + '/page',
+  getEventsPage (currentPage, perPage, name) {
+    return axios.get(API_URL + '/search/event',
       {
         params:
           {
             currentPage: currentPage,
-            perPage: perPage
+            perPage: perPage,
+            name: name
+          }
+      })
+  }
+
+  getSearchedEventByName (name) {
+    return axios.get(API_URL + '/search/event/name',
+      {
+        params:
+          {
+            name: name
+          }
+      })
+  }
+
+  deleteEvent (id) {
+    return axios.delete(API_URL + '/myEvents/delete',
+      {
+        params:
+          {
+            id: id
           }
       })
   }
