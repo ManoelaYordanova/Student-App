@@ -4,8 +4,8 @@
     <form>
       <h1>Describe and share your event</h1>
       <div class="grid-date-time">
-          <input type="text" id="name" required v-model="eventRequest.name">
-          <input type="text" id="name" required v-model="eventRequest.city">
+          <input placeholder="Event's name" type="text" id="name" required v-model="eventRequest.name">
+          <input placeholder="City" type="text" id="name" required v-model="eventRequest.city">
           <input type="datetime-local" min="2023-04-28" max="2023-12-31" required v-model="eventRequest.startDateTime">
           <input type="datetime-local" id="endDate" min="2023-04-28" max="2023-12-31" required v-model="eventRequest.endDateTime">
       </div>
@@ -70,7 +70,7 @@ body {
 .container form {
   position: relative;
   top: 50px;
-  left: 180px;
+  left: 220px;
   width: 830px;
   height: 550px;
   display: flex;
