@@ -12,12 +12,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -28,7 +32,14 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(RegisterRequest request) {
+    public ResponseEntity<?> register(RegisterRequest request) {
+        Map<String, String> response = new HashMap<>();
+        Optional<User> userEmail = repository.findByEmail(request.getEmail());
+        if (userEmail.isPresent()) {
+            response.put("message", "User with this email already exists!");
+            return ResponseEntity.badRequest().body(response);
+        }
+
         var user = User.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
@@ -40,10 +51,10 @@ public class AuthenticationService {
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
         saveUserToken(savedUser, jwtToken);
-        return AuthenticationResponse.builder()
+        return ResponseEntity.ok(AuthenticationResponse.builder()
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
-                .build();
+                .build());
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {

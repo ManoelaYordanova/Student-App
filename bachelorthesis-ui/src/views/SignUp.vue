@@ -3,9 +3,10 @@
   <section>
     <div class="form-box">
       <div class="form-value">
-        <form action="">
           <h2>Registration</h2>
-
+          <div class="error">
+            {{error}}
+          </div>
           <div class="inputbox">
               <span class="icon">
               <i class="fa-solid fa-user"></i>
@@ -47,7 +48,6 @@
           <div class="register">
             <p>Already have an account? <router-link to="/login">Login</router-link></p>
           </div>
-        </form>
       </div>
     </div>
   </section>
@@ -67,7 +67,8 @@ export default {
         lastname: '',
         email: '',
         password: ''
-      }
+      },
+      error: ''
     }
   },
   mounted () {
@@ -77,6 +78,13 @@ export default {
       UserService.registerUser(this.request).then(
         response => {
           this.message = response.data.message
+        },
+        error => {
+          console.log(error)
+          this.error =
+            (error.response && error.response.data && error.response.data.message) ||
+            error.message ||
+            error.toString()
         }
       )
     }
@@ -100,7 +108,7 @@ section {
   align-items: center;
   min-height: 100vh;
   width: 100%;
-  background: url("../assets/water8.jpg")no-repeat;
+  background: url("../assets/abstract-textured.jpg")no-repeat;
   background-size: cover;
   background-position: center;
 }

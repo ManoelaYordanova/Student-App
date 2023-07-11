@@ -5,17 +5,22 @@
       <router-link to="/"><h1>Home</h1></router-link>
       <router-link to="/eventsPage"><h1>Events</h1></router-link>
       <router-link to="/about"><h1>About</h1></router-link>
-      <router-link to="/addEvent"><h1>Add Event</h1></router-link>
-      <router-link to="/signUp"><h1>| Sign up</h1></router-link>
-      <router-link to="/login"><h1>Log in</h1></router-link>
-      <router-link to="/myAccount"><h1>My Account</h1></router-link>
+      <router-link v-if="authenticatedUser()" to="/addEvent"><h1>Add Event</h1></router-link>
+      <router-link v-if="!authenticatedUser()" to="/signUp"><h1>| Sign up</h1></router-link>
+      <router-link v-if="!authenticatedUser()" to="/login"><h1>Log in</h1></router-link>
+      <router-link v-if="authenticatedUser()" to="/myAccount"><h1>My Account</h1></router-link>
     </nav>
   </header>
 </template>
 
 <script>
 export default {
-  name: 'HeaderMenu'
+  name: 'HeaderMenu',
+  methods: {
+    authenticatedUser () {
+      return this.$store.state.isUserLoggedIn
+    }
+  }
 }
 </script>
 

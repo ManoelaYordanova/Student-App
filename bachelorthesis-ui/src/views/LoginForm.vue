@@ -3,7 +3,6 @@
   <section>
     <div class="form-box">
       <div class="form-value">
-        <form action="">
           <h2>Login</h2>
           <div class="inputbox">
               <span class="icon">
@@ -29,7 +28,6 @@
           <div class="register">
             <p>Don`t have an account <router-link to="/signUp">Register</router-link></p>
           </div>
-        </form>
       </div>
     </div>
   </section>
@@ -58,6 +56,8 @@ export default {
         response => {
           localStorage.setItem('access_token', response.data.access_token)
           localStorage.setItem('refresh_token', response.data.refresh_token)
+          this.$store.commit('setIsUserLoggedIn', true)
+          this.$router.push({ name: 'home' })
         }
       )
     }
@@ -81,7 +81,7 @@ section {
   align-items: center;
   min-height: 100vh;
   width: 100%;
-  background: url("../assets/water8.jpg")no-repeat;
+  background: url("../assets/abstract-textured.jpg")no-repeat;
   background-size: cover;
   background-position: center;
 }
