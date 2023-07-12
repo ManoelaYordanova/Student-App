@@ -102,7 +102,7 @@ section {
 
 h2 {
   font-size: 2.2em;
-  color: #fff;
+  color: #BDB1A7;
   text-align: center;
 }
 
@@ -118,7 +118,7 @@ h2 {
   top: 50%;
   left: 5px;
   transform: translateY(-50%);
-  color: #fff;
+  color: #BDB1A7;
   font-size: 1.2em;
   pointer-events: none;
   transition: .5s;
@@ -194,5 +194,6 @@ button:hover {
 }
 .register p a:hover {
   text-decoration: underline;
+  color: #BDB1A7;
 }
 </style>

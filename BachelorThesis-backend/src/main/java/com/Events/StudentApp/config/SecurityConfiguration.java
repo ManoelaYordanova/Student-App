@@ -29,7 +29,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers("/api/v1/auth/**")
                 .permitAll()
-                .requestMatchers("/event/page")
+                .requestMatchers("/event/search/event")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

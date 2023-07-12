@@ -38,11 +38,8 @@ public class EventService {
             return ResponseEntity.ok().body(newEvent);
     }
 
-    public ResponseEntity<?> getAllEvents() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Optional<User> user = userRepository.findByEmail(auth.getPrincipal().toString());
-
-        var returnAllEvents =  eventRepository.findAll();
+    public ResponseEntity<?> getAllEvents(@RequestParam Pageable page) {
+        var returnAllEvents =  eventRepository.findEvents(page);
         System.out.println(returnAllEvents);
         return ResponseEntity.ok().body(returnAllEvents);
     }

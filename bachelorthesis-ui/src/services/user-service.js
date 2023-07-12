@@ -23,6 +23,10 @@ class UserService {
         password: request.password
       })
   }
+
+  logout () {
+    return axios.get(API_URL + 'api/v1/auth/logout')
+  }
 }
 
 export default new UserService()

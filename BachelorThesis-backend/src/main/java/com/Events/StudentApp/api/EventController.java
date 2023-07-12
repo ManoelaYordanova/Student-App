@@ -30,11 +30,6 @@ public class EventController {
         return eventService.createEvent(eventRequest);
     }
 
-    @GetMapping("/load")
-    public ResponseEntity<?> loadAllEvents() {
-        return eventService.getAllEvents();
-    }
-
     @DeleteMapping("/myEvents/delete")
     public ResponseEntity<?> deleteEvent(@RequestParam Integer id) {
         eventService.deleteEvent(id);

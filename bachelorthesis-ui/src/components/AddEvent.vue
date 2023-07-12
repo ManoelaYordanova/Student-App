@@ -40,6 +40,7 @@ export default {
       EventService.addEvent(this.eventRequest).then(
         response => {
           this.message = response.data.message
+          this.$router.push({ name: 'EventsPage' })
         }
       )
     }

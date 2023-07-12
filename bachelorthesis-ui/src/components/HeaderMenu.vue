@@ -9,6 +9,7 @@
       <router-link v-if="!authenticatedUser()" to="/signUp"><h1>| Sign up</h1></router-link>
       <router-link v-if="!authenticatedUser()" to="/login"><h1>Log in</h1></router-link>
       <router-link v-if="authenticatedUser()" to="/myAccount"><h1>My Account</h1></router-link>
+      <router-link v-if="authenticatedUser()" to="/myAccount"><h1>Logout</h1></router-link>
     </nav>
   </header>
 </template>
