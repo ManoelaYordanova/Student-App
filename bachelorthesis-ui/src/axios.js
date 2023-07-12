@@ -5,8 +5,10 @@ const axiosApiInstance = axios.create()
 axiosApiInstance.interceptors.request.use(
   async config => {
     const accessToken = localStorage.getItem('access_token')
-    config.headers = {
-      Authorization: `Bearer ${accessToken}`
+    if (accessToken) {
+      config.headers = {
+        Authorization: `Bearer ${accessToken}`
+      }
     }
     return config
   },

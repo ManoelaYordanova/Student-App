@@ -25,7 +25,7 @@ class UserService {
   }
 
   logout () {
-    return axios.get(API_URL + 'api/v1/auth/logout')
+    return axios.get(API_URL + '/api/v1/auth/logout')
   }
 }
 
